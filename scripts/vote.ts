@@ -40,8 +40,7 @@ export const vote = async (proposalId: string) => {
 const proposals = JSON.parse(fs.readFileSync(PROPOSALS_FILE_PATH, "utf8"));
 const networkName = network.name as keyof typeof networkConfig;
 const chainId = networkConfig[networkName].chainId;
-console.log(chainId);
-const proposalId = proposals[chainId][proposals["42"].length - 1].proposalId;
+const proposalId = proposals[chainId][proposals[chainId].length - 1].proposalId;
 
 vote(proposalId)
   .then(() => process.exit(0))

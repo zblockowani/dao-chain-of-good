@@ -38,7 +38,7 @@ export const networkConfig: networkConfigInfo = {
     beneficiaryAddress: "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
     capaignTokenAddress: "",
   },
-
+ 
   localhost: {
     chainId: 31337,
     lendingPoolAddressProviderAddress: "",

@@ -4,6 +4,8 @@ pragma solidity 0.8.8;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "hardhat/console.sol";
 
+error Test();
+
 contract MockADaiToken is ERC20 {
     mapping(address => uint256) public s_transferBlock;
     mapping(address => uint256) s_balances;
@@ -20,17 +22,10 @@ contract MockADaiToken is ERC20 {
         uint256 passedBlocks = block.number - s_transferBlock[account];
         uint256 multiplier = s_balances[account] == 0 ? 0 : passedBlocks;
 
-        console.log("Multiplier: ", multiplier);
-        console.log("PassedBlocks: ", passedBlocks);
-        console.log("Stored balance: ", s_balances[account]);
-        console.log("Transfere block ", s_transferBlock[account]);
-        console.log("BLock number: ", block.number);
-
         uint256 balance = s_balances[account] +
             ((s_balances[account] * multiplier * 1) / 1000);
 
-        console.log("Balance: ", balance);
-        //0,01% interest rate per block
+        //0,1% interest rate per block
         return balance;
     }
 
@@ -42,5 +37,9 @@ contract MockADaiToken is ERC20 {
     function burn(address _user, uint256 _amount) external {
         s_balances[_user] = balanceOf(_user) - _amount;
         s_transferBlock[_user] = block.number;
+    }
+
+    function a() external pure{
+        revert Test();
     }
 }

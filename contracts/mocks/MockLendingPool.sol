@@ -37,6 +37,7 @@ contract MockLendingPool {
         } else {
             s_token.transfer(to, amount);
             s_aToken.burn(msg.sender, amount);
+            
             return amount;
         }
     }

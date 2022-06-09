@@ -1,10 +1,9 @@
 import { DeployFunction } from "hardhat-deploy/dist/types";
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { ethers, network } from "hardhat";
-import { ADDRESS_ZERO, DEVELOPMENT_CHAINS } from "../helper-hardhat-config";
+import { DEVELOPMENT_CHAINS } from "../helper-hardhat-config";
 const setupAave: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
-  const { getUnnamedAccounts, getNamedAccounts } = hre;
-  const { deployer } = await getNamedAccounts();
+  const { getUnnamedAccounts} = hre;
   const [userOne, userTwo] = await getUnnamedAccounts();
 
   if (DEVELOPMENT_CHAINS.includes(network.name)) {
@@ -35,4 +34,4 @@ const setupAave: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
 };
 
 export default setupAave;
-setupAave.tags = ["all", "mock"];
+setupAave.tags = ["all", "setupMocks"];

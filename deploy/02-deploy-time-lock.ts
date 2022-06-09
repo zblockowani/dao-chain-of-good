@@ -12,14 +12,14 @@ const deployTimeLock: DeployFunction = async (hre: HardhatRuntimeEnvironment) =>
   log("TimeLock deployment...");
 
   const args = [MIN_DELAY, [], []];
-  // const timeLock = await deploy("ChainOfGoodTimeLock", {
-  //   from: deployer,
-  //   args: args,
-  //   log: true,
-  //   waitConfirmations: networkConfig[network.name].blockConfirmation || 0
-  // });
+  const timeLock = await deploy("ChainOfGoodTimeLock", {
+    from: deployer,
+    args: args,
+    log: true,
+    waitConfirmations: networkConfig[network.name].blockConfirmation || 0
+  });
 
-  // log(`TimeLock is deployed at address ${timeLock.address}!`);
+  log(`TimeLock is deployed at address ${timeLock.address}!`);
 
   if (
    
