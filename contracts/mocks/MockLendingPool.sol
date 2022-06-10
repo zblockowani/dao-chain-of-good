@@ -3,8 +3,9 @@ pragma solidity ^0.8.8;
 
 import "@openzeppelin/contracts/interfaces/IERC20.sol";
 import "./MockADaiToken.sol";
+import "../ILendingPool.sol";
 
-contract MockLendingPool {
+contract MockLendingPool is ILendingPool {
     MockADaiToken s_aToken;
     IERC20 s_token;
 

@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.8;
 
-contract MockLendingPoolAddressProvider {
+import "../ILendingPoolAddressProvider.sol";
+
+contract MockLendingPoolAddressProvider is ILendingPoolAddressProvider {
     address s_lendingPoolAddress;
 
     constructor(address _lendingPoolAddress) {

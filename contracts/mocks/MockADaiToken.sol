@@ -7,6 +7,7 @@ import "hardhat/console.sol";
 error Test();
 
 contract MockADaiToken is ERC20 {
+    event Minted();
     mapping(address => uint256) public s_transferBlock;
     mapping(address => uint256) s_balances;
 
@@ -32,14 +33,11 @@ contract MockADaiToken is ERC20 {
     function mint(address _user, uint256 _amount) external {
         s_balances[_user] = balanceOf(_user) + _amount;
         s_transferBlock[_user] = block.number;
+        emit Minted();
     }
 
     function burn(address _user, uint256 _amount) external {
         s_balances[_user] = balanceOf(_user) - _amount;
         s_transferBlock[_user] = block.number;
-    }
-
-    function a() external pure{
-        revert Test();
     }
 }

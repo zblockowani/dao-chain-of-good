@@ -2,15 +2,16 @@
 pragma solidity 0.8.8;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "./IlendingPoolAddressProvider.sol";
+import "./ILendingPoolAddressProvider.sol";
 import "./Campaign.sol";
 
 contract ChainOfGoodFactory is Ownable {
-    ILendingPoolAddressProvider public s_lendingPoolAddressProvider;
+    ILendingPoolAddressProvider immutable i_lendingPoolAddressProvider;
+
     address[] public s_campaigns;
 
     event CampaignCreated(
-        address addr,
+        address indexed campaignAddress,
         uint256 startBlock,
         uint256 endBlock,
         address tokenAddress,
@@ -18,7 +19,7 @@ contract ChainOfGoodFactory is Ownable {
     );
 
     constructor(address _lendingPoolAddressProvider) {
-        s_lendingPoolAddressProvider = ILendingPoolAddressProvider(
+        i_lendingPoolAddressProvider = ILendingPoolAddressProvider(
             _lendingPoolAddressProvider
         );
     }
@@ -30,7 +31,7 @@ contract ChainOfGoodFactory is Ownable {
         address _beneficiaryWallet,
         string memory _metadataUrl
     ) external onlyOwner {
-        address lendingPool = s_lendingPoolAddressProvider.getLendingPool();
+        address lendingPool = i_lendingPoolAddressProvider.getLendingPool();
         Campaign campaing = new Campaign(
             _startBlock,
             _endBlock,
@@ -48,5 +49,9 @@ contract ChainOfGoodFactory is Ownable {
             _token,
             _beneficiaryWallet
         );
+    }
+
+    function getCampaigns() external view returns (address[] memory) {
+        return s_campaigns;
     }
 }
