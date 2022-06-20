@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { deployments, ethers, getNamedAccounts, network } from "hardhat";
-import { developmentChains } from "../../helper-hardhat-config";
-import { ChainOfGoodToken } from "../../typechain-types";
+import { developmentChains } from "../helper-hardhat-config";
+import { ChainOfGoodToken } from "../typechain-types";
 
 !developmentChains.includes(network.name)
   ? describe.skip

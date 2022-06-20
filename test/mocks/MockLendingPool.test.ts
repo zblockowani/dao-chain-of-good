@@ -1,11 +1,11 @@
 import { expect } from "chai";
 import { deployments, ethers, getNamedAccounts, network } from "hardhat";
-import { developmentChains } from "../../../helper-hardhat-config";
+import { developmentChains } from "../../helper-hardhat-config";
 import {
   MockADaiToken,
   MockDaiToken,
-  MockLendingPool,
-} from "../../../typechain-types";
+  MockLendingPool
+} from "../../typechain-types";
 !developmentChains.includes(network.name)
   ? describe.skip
   : describe("MockLendingPool", () => {

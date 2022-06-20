@@ -1,10 +1,10 @@
 import { expect } from "chai";
 import { deployments, ethers, network } from "hardhat";
-import { developmentChains } from "../../../helper-hardhat-config";
+import { developmentChains } from "../../helper-hardhat-config";
 import {
   MockLendingPool,
-  MockLendingPoolAddressProvider,
-} from "../../../typechain-types";
+  MockLendingPoolAddressProvider
+} from "../../typechain-types";
 
 !developmentChains.includes(network.name)
   ? describe.skip

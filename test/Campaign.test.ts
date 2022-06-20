@@ -1,15 +1,12 @@
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { expect } from "chai";
-import { deployContract } from "ethereum-waffle";
 import { deployments, ethers, network } from "hardhat";
-import { developmentChains } from "../../helper-hardhat-config";
+import { developmentChains } from "../helper-hardhat-config";
 import {
-  Campaign,
-  Campaign__factory,
-  ILendingPool,
-  MockDaiToken,
-} from "../../typechain-types";
-import { moveBlocks } from "../../utils/move-blocks";
+  Campaign, ILendingPool,
+  MockDaiToken
+} from "../typechain-types";
+import { moveBlocks } from "../utils/move-blocks";
 
 !developmentChains.includes(network.name)
   ? describe.skip
@@ -118,8 +115,8 @@ import { moveBlocks } from "../../utils/move-blocks";
       
       describe("Withdraw", () => {
         it("Should revert when requeste more than it was donated", async () => {
-          await expect(campaign.connect(firstDonor).withdraw(100)).to.be
-            .reverted;
+            await expect(campaign.connect(firstDonor).withdraw(100)).to.be
+            .revertedWith("Campaing__WrongWithdrawRequested");
         });
 
         it("Should withdraw be possible during the campaing", async () => {

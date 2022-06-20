@@ -2,13 +2,10 @@ import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { expect } from "chai";
 import {
   deployments,
-  ethers,
-  getNamedAccounts,
-  getUnnamedAccounts,
-  network,
+  ethers, network
 } from "hardhat";
-import { developmentChains } from "../../helper-hardhat-config";
-import { ChainOfGoodFactory, MockDaiToken } from "../../typechain-types";
+import { developmentChains } from "../helper-hardhat-config";
+import { ChainOfGoodFactory, MockDaiToken } from "../typechain-types";
 
 !developmentChains.includes(network.name)
   ? describe.skip
@@ -37,7 +34,7 @@ import { ChainOfGoodFactory, MockDaiToken } from "../../typechain-types";
           metadata
         );
         const response = await tx.wait(1);
-        const eventArgs = response.events![1].args; // second event because the first one is from Approval from Campaign constructor
+        const eventArgs = response.events![1].args; // second event because the first one is Approval from Campaign constructor
 
         const campaignAddress = eventArgs!.campaignAddress;
         const campaigns = await factory.getCampaigns();

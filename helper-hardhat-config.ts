@@ -35,29 +35,27 @@ export const networkConfig: networkConfigInfo = {
   hardhat: {
     chainId: 31337,
     lendingPoolAddressProviderAddress: "",
-    beneficiaryAddress: "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
-    capaignTokenAddress: "",
+    beneficiaryAddress: "",
   },
- 
+
   localhost: {
     chainId: 31337,
     lendingPoolAddressProviderAddress: "",
-    beneficiaryAddress: "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
-    capaignTokenAddress: "",
+    beneficiaryAddress: "",
   },
   mumbai: {
     chainId: 80001,
     lendingPoolAddressProviderAddress:
       "0x178113104fEcbcD7fF8669a0150721e231F0FD4B",
     beneficiaryAddress: "",
-    capaignTokenAddress: "",
+    capaignTokenAddress: "0x001B3B4d0F3714Ca98ba10F6042DaEbF0B1B7b6F",
     blockConfirmation: 6,
   },
   kovan: {
     chainId: 42,
     lendingPoolAddressProviderAddress:
       "0x88757f2f99175387aB4C6a4b3067c77A695b0349",
-    beneficiaryAddress: "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+    beneficiaryAddress: "",
     capaignTokenAddress: "0x04DF6e4121c27713ED22341E7c7Df330F56f289B",
     blockConfirmation: 6,
   },

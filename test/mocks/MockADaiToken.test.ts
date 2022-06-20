@@ -1,10 +1,10 @@
 import { expect } from "chai";
 import { deployments, ethers, getNamedAccounts, network } from "hardhat";
-import { developmentChains } from "../../../helper-hardhat-config";
+import { developmentChains } from "../../helper-hardhat-config";
 import {
   MockADaiToken
-} from "../../../typechain-types";
-import { moveBlocks } from "../../../utils/move-blocks";
+} from "../../typechain-types";
+import { moveBlocks } from "../../utils/move-blocks";
 
 !developmentChains.includes(network.name)
   ? describe.skip
